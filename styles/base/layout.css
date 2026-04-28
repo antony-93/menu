@@ -1,0 +1,36 @@
+:root {
+  --text: #604f43;
+  --text-h: #372c25;
+  --text-l: #f9f6f0;
+
+  --primary: #ae6c32;
+  --secondary: #6b4524;
+
+  --bg: #f7f4ed;
+  --paper: #faf8f4;
+  --border: #d6cdc2;
+
+  --shadow: 0 1px 2px hsl(25 30% 20% / 0.08), 0 8px 24px hsl(25 30% 20% / 0.06);
+
+  --sans: "Inter", sans-serif;
+  --heading: "Cormorant Garamond", serif;
+  --cursive: "Dancing Script", cursive;
+
+  font: 16px/145% var(--sans);
+  color: var(--text);
+  background-color: var(--bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--actions-height) + 10px);
+}
+
+html {
+  scroll-behavior: smooth;
+}
