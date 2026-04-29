@@ -2,17 +2,32 @@ import { pomarMenuSections } from "./const/menu";
 import { setActiveSection, subscribe } from "./store/active-menu-section";
 import { slugify } from "./utils/slugify";
 
-const naoseionomeainda = (linksEl) => {
-  subscribe((activeSection) => {
+const syncActiveSectionClass = (linkEl, sectionId) => {
+  subscribe((activeSectionId) => {
+    linkEl.classList.toggle('active', sectionId === activeSectionId);
   });
 }
 
 const createSectionLink = (section) => {
   const el = document.createElement('a');
+  const sectionName = slugify(section.name);
 
-  el.href = `#${slugify(section.name)}`;
+  el.href = `#${sectionName}`;
   el.textContent = `${section.icon} ${section.name}`;
-  el.addEventListener('click', () => setActiveSection(section.id));
+
+  const onClickSectionLink = (event) => {
+    const sectionElement = document.getElementById(sectionName);
+
+    if (!sectionElement) {
+      event.preventDefault();
+      return;
+    }
+
+    setActiveSection(section.id)
+  }
+
+  el.addEventListener('click', onClickSectionLink);
+  syncActiveSectionClass(el, section.id);
 
   return el;
 }

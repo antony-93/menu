@@ -1,3 +1,5 @@
+import { getMenuActionsHeight, subscribe as subscribeActionsHeight } from "./menu-actions-height";
+
 let activeMenuSectionId = null;
 let isProgrammaticScroll = false;
 
@@ -35,7 +37,7 @@ export const unregisterSectionElement = (sectionEl) => {
     sectionsElements.delete(sectionEl);
 };
 
-const getLastVisibleSectionEl = () => {
+const getBottommostDisplayedSectionEl = () => {
     const displayedSectionsEl = Array.from(sectionsElements);
 
     return displayedSectionsEl.reduce((closest, el) => {
@@ -46,14 +48,10 @@ const getLastVisibleSectionEl = () => {
     }, displayedSectionsEl[0]);
 };
 
-const getFirstVisibleSectionEl = () => {
-    const actionsHeight = parseInt(
-        getComputedStyle(document.documentElement).getPropertyValue(
-            "--actions-height",
-        ),
-    );
+const getVisibleSectionEl = () => {
+    const actionsHeight = getMenuActionsHeight();
 
-    const visibleSectionsEl = Array.from(sectionsElements.current).filter(
+    const visibleSectionsEl = Array.from(sectionsElements).filter(
         (el) => {
             const elBottomPosition =
                 el.getBoundingClientRect().bottom - actionsHeight;
@@ -72,16 +70,16 @@ const getFirstVisibleSectionEl = () => {
     }, visibleSectionsEl[0]);
 };
 
-const setActiveSectionByElementPosition = () => {
+export const setActiveSectionByElementPosition = () => {
     if (isProgrammaticScroll) return;
 
     const scrollPositionIsAtBottom =
         window.innerHeight + window.scrollY >= document.body.scrollHeight - 10;
 
     const activeSectionEl = scrollPositionIsAtBottom
-        ? getLastVisibleSectionEl()
-        : getFirstVisibleSectionEl();
-
+        ? getBottommostDisplayedSectionEl()
+        : getVisibleSectionEl();
+        
     if (activeSectionEl) {
         activeMenuSectionId = Number(activeSectionEl.getAttribute("data-id"));
         notify();
@@ -92,5 +90,10 @@ const onScrollEnd = () => {
     isProgrammaticScroll = false;
 };
 
+const onActionsHeightChange = () => {
+    setActiveSectionByElementPosition();
+};
+
 window.addEventListener("scroll", setActiveSectionByElementPosition);
 window.addEventListener("scrollend", onScrollEnd);
+subscribeActionsHeight(onActionsHeightChange);

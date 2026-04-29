@@ -1,18 +1,20 @@
 import { createSearchMenuItemInput } from "./search-menu-item-input";
 import { createMenuSectionNav } from "./menu-section-nav";
+import { setMenuActionsHeight, subscribe } from "./store/menu-actions-height";
 
-const setResizeObserver = (el) => {
-    const updateMenuActionsHeightCSSVariable = () => {
+const syncMenuActionsHeightCSSVariable = () => {
+    subscribe((height) => {
         document.documentElement.style.setProperty(
             "--actions-height",
-            `${el.offsetHeight}px`,
+            `${height}px`,
         );
-    };
+    })
+};
 
-    const observer = new ResizeObserver(
-        updateMenuActionsHeightCSSVariable
-    );
-
+const setResizeObserver = (el) => {
+    syncMenuActionsHeightCSSVariable();
+    setMenuActionsHeight(el.offsetHeight);
+    const observer = new ResizeObserver((el) => setMenuActionsHeight(el.offsetHeight));
     observer.observe(el);
 }
 

@@ -20,6 +20,7 @@ export const createMenuSection = (section) => {
 
     el.id = slugify(section.name);
     el.classList.add('menu-section');
+    el.dataset.id = section.id;
 
     el.innerHTML = `
       <h2>${section.name}</h2>
