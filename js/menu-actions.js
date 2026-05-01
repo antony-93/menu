@@ -14,7 +14,10 @@ const syncMenuActionsHeightCSSVariable = () => {
 const setResizeObserver = (el) => {
     syncMenuActionsHeightCSSVariable();
     setMenuActionsHeight(el.offsetHeight);
-    const observer = new ResizeObserver((el) => setMenuActionsHeight(el.offsetHeight));
+
+    const onResize = (entries) => setMenuActionsHeight(entries[0].target.offsetHeight);
+
+    const observer = new ResizeObserver(onResize);
     observer.observe(el);
 }
 
