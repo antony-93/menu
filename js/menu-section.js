@@ -24,8 +24,8 @@ export const createMenuSection = (section) => {
 
     el.innerHTML = `
       <h2>${section.name}</h2>
-      <div className="underline"></div>
-      <span className="icon">${section.icon}</span>
+      <div class="underline"></div>
+      <span class="icon">${section.icon}</span>
     `;
 
     el.appendChild(createMenuSectionCategoriesList(section.categories));
