@@ -4,7 +4,16 @@ import { slugify } from "./utils/slugify";
 
 const syncActiveSectionClass = (linkEl, sectionId) => {
   subscribe((activeSectionId) => {
-    linkEl.classList.toggle('active', sectionId === activeSectionId);
+    const isActive = sectionId === activeSectionId;
+    linkEl.classList.toggle('active', isActive);
+    
+    if (isActive) {
+      linkEl.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      });
+    }
   });
 }
 
