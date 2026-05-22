@@ -1,16 +1,16 @@
 import { moneyFormat } from "./utils/moneyFormat";
 
 const createMenuItemDescription = (description) => {
-    const el = document.createElement('p');
-    el.textContent = description;
-    return el;
-}
+  const paragraphEl = document.createElement("p");
+  paragraphEl.textContent = description;
+  return paragraphEl;
+};
 
 export const createMenuItem = (item) => {
-    const el = document.createElement('article');
+  const articleEl = document.createElement("article");
 
-    el.classList.add('menu-item');
-    el.innerHTML = `
+  articleEl.classList.add("menu-item");
+  articleEl.innerHTML = `
         <header>
             <h4>${item.name}</h4>
 
@@ -20,11 +20,11 @@ export const createMenuItem = (item) => {
                 <strong>${moneyFormat(item.price)}</strong>
             </data>
         </header>
-    `
+    `;
 
-    if (item.description) {
-        el.appendChild(createMenuItemDescription(item.description));
-    }
+  if (item.description) {
+    articleEl.appendChild(createMenuItemDescription(item.description));
+  }
 
-    return el;
-}
+  return articleEl;
+};

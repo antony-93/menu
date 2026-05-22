@@ -1,18 +1,11 @@
 import { createMenuSection } from "./menu-section";
-import { getMenu } from "./store/menu";
-import { getRegisteredSectionsElements, unregisterSectionElement } from "./store/active-menu-section";
 
-export const renderMenu = () => {
-    const registeredSectionsEl = getRegisteredSectionsElements();
+export const renderMenu = (menu) => {
+  const menuSectionsEl = document.createDocumentFragment();
 
-    registeredSectionsEl.forEach(sectionEl =>
-        unregisterSectionElement(sectionEl)
-    );
+  for (const section of menu) {
+    menuSectionsEl.appendChild(createMenuSection(section));
+  }
 
-    const el = document.getElementById('menu');
-    const menu = getMenu();
-    const sectionsEl = menu.map(createMenuSection);
-
-    el.innerHTML = '';
-    el.append(...sectionsEl);
-}
+  document.getElementById("menu").replaceChildren(menuSectionsEl);
+};

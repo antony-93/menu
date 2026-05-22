@@ -1,32 +1,33 @@
 import { createMenuItem } from "./menu-item";
 
 const createMenuCategoryTitle = (name) => {
-    const el = document.createElement('h3');
-    el.classList.add('menu-category');
-    el.textContent = name;
-    return el;
-}
+  const headingEl = document.createElement("h3");
+  headingEl.classList.add("menu-category");
+  headingEl.textContent = name;
+  return headingEl;
+};
 
-const createMenuCategoryItemsList = (items) => {
-    const el = document.createElement('ul');
-    const itemsEl = items.map((item) => {
-        const itemEl = document.createElement('li');
-        itemEl.appendChild(createMenuItem(item));
-        return itemEl;
-    });
+const createMenuItemsList = (items) => {
+  const listEl = document.createElement("ul");
 
-    el.append(...itemsEl);
+  for (const item of items) {
+    const listItemEl = document.createElement("li");
 
-    return el;
-}
+    listItemEl.appendChild(createMenuItem(item));
+
+    listEl.appendChild(listItemEl);
+  }
+
+  return listEl;
+};
 
 export const createMenuCategory = (category) => {
-    const el = document.createDocumentFragment();
+  const el = document.createDocumentFragment();
 
-    el.append(
-        createMenuCategoryTitle(category.name),
-        createMenuCategoryItemsList(category.items)
-    );
+  el.append(
+    createMenuCategoryTitle(category.name),
+    createMenuItemsList(category.items),
+  );
 
-    return el;
+  return el;
 };

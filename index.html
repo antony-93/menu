@@ -3,19 +3,23 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>menu</title>
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Dancing+Script:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" />
-  <link rel="stylesheet" media="print" onload="this.media='all'"
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Dancing+Script:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" />
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search&display=swap" />
-  <link rel="stylesheet" media="print" onload="this.media='all'"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search&display=swap" />
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..900;1,9..40,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    fetchpriority="low" />
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search&display=swap"
+    fetchpriority="low" />
+
   <link rel="stylesheet" href="./styles/index.css" />
 </head>
 
@@ -23,21 +27,33 @@
   <header class="menu-header">
     <hgroup>
       <p class="welcome">Bem-vindo(a) ao</p>
-      <h1>Pomar</h1>
-      <p>CAFÉ • CHOPERIA</p>
+      <h1>NULL POINTER</h1>
+      <p class="tagline">CAFÉ • CHOPERIA • CHURRASCO</p>
     </hgroup>
   </header>
 
   <main>
-    <div class="menu-actions" id="menu-actions"></div>
+    <div class="menu-actions" id="menu-actions">
+      <form>
+        <div class="field">
+          <input name="search" type="text" placeholder="Buscar drinks, pratos, sobremesas..." id="search-menu-items" />
+          <span class="material-symbols-outlined">search</span>
+        </div>
+      </form>
+
+      <nav class="menu-section-navigation">
+        <ul id="menu-navigation-links-list"></ul>
+      </nav>
+    </div>
+
     <div class="menu" id="menu"></div>
   </main>
 
   <footer class="menu-footer">
     <p>
-      Expresse suas emoções
+      Esqueça os bugs - só por hoje
       <br />
-      <small>POMAR • CAFÉ • CHOPERIA</small>
+      <small>NULL POINTER • CAFÉ • CHOPERIA • CHURRASCO</small>
     </p>
   </footer>
 

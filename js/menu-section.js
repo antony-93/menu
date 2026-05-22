@@ -1,35 +1,33 @@
 import { createMenuCategory } from "./menu-category";
-import { registerSectionElement } from "./store/active-menu-section";
 import { slugify } from "./utils/slugify";
 
-const createMenuSectionCategoriesList = (categories) => {
-    const el = document.createElement('ul');
-    const categoriesEl = categories.map((category) => {
-        const categoryEl = document.createElement('li');
-        categoryEl.appendChild(createMenuCategory(category));
-        return categoryEl;
-    });
+const createMenuCategoriesList = (categories) => {
+  const listEl = document.createElement("ul");
 
-    el.append(...categoriesEl);
+  for (const category of categories) {
+    const listItemEl = document.createElement("li");
 
-    return el;
-}
+    listItemEl.appendChild(createMenuCategory(category));
+
+    listEl.appendChild(listItemEl);
+  }
+
+  return listEl;
+};
 
 export const createMenuSection = (section) => {
-    const el = document.createElement('section');
+  const sectionEl = document.createElement("section");
 
-    el.id = slugify(section.name);
-    el.classList.add('menu-section');
-    el.dataset.id = section.id;
+  sectionEl.id = slugify(section.name);
+  sectionEl.classList.add("menu-section");
+  sectionEl.dataset.id = section.id;
+  sectionEl.innerHTML = `
+    <h2>${section.name}</h2>
+    <div class="underline"></div>
+    <span class="icon">${section.icon}</span>
+  `;
 
-    el.innerHTML = `
-      <h2>${section.name}</h2>
-      <div class="underline"></div>
-      <span class="icon">${section.icon}</span>
-    `;
+  sectionEl.appendChild(createMenuCategoriesList(section.categories));
 
-    el.appendChild(createMenuSectionCategoriesList(section.categories));
-    registerSectionElement(el);
-
-    return el;
+  return sectionEl;
 };
