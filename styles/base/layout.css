@@ -1,20 +1,21 @@
 :root {
-  --text: #604f43;
-  --text-h: #372c25;
-  --text-l: #f9f6f0;
+  --text: #e3e3e6;
+  --text-h: #ffffff;
+  --text-l: #ffffff;
 
-  --primary: #ae6c32;
-  --secondary: #6b4524;
+  --primary: #e63946;
+  --secondary: #ffb703;
+  --accent: #2a9d8f;
 
-  --bg: #f7f4ed;
-  --paper: #faf8f4;
-  --border: #d6cdc2;
+  --bg: #1a1818;
+  --paper: #242121;
+  --border: #383333;
 
-  --shadow: 0 1px 2px hsl(25 30% 20% / 0.08), 0 8px 24px hsl(25 30% 20% / 0.06);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.2);
 
   --sans: "Inter", sans-serif;
-  --heading: "Cormorant Garamond", serif;
-  --cursive: "Dancing Script", cursive;
+  --heading: "DM Sans", sans-serif;
+  --display: "DM Mono", monospace;
 
   font: 16px/145% var(--sans);
   color: var(--text);

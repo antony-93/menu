@@ -14,9 +14,8 @@
 }
 
 .menu-footer p {
-  font-family: var(--cursive);
+  font-family: var(--display);
   color: var(--primary);
-  font-size: 1.2rem;
   font-weight: bold;
 }
 
@@ -39,15 +38,13 @@
   overflow: hidden;
 }
 
-.menu-header p {
+.menu-header .tagline {
   font-size: 0.7rem;
   letter-spacing: 0.4rem;
 }
 
 .menu-header .welcome {
-  font-family: var(--cursive);
-  font-size: 1rem;
-  letter-spacing: unset;
+  font-family: var(--display);
   color: var(--primary);
   font-weight: bold;
 }
@@ -63,7 +60,7 @@
   border-bottom: 1px solid var(--border);
 }
 
-.search-menu-item {
+.menu-actions form {
   display: inline-block;
   width: 100%;
   padding-right: 1rem;
@@ -149,7 +146,7 @@
   margin-bottom: 1rem;
   display: inline-block;
   color: var(--text-l);
-  font-family: var(--cursive);
+  font-family: var(--display);
   padding-right: 2rem;
   padding-left: 2rem;
   background-color: var(--primary);
