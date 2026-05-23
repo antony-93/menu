@@ -36,7 +36,6 @@ const createLink = (section) => {
   linkEl.href = "#" + sectionName;
   linkEl.dataset.sectionName = sectionName;
   linkEl.textContent = `${section.icon} ${section.name}`;
-
   linkEl.addEventListener("click", onClickLink);
 
   return linkEl;

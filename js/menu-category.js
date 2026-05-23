@@ -2,8 +2,10 @@ import { createMenuItem } from "./menu-item";
 
 const createMenuCategoryTitle = (name) => {
   const headingEl = document.createElement("h3");
+
   headingEl.classList.add("menu-category");
   headingEl.textContent = name;
+  
   return headingEl;
 };
 
@@ -22,12 +24,12 @@ const createMenuItemsList = (items) => {
 };
 
 export const createMenuCategory = (category) => {
-  const el = document.createDocumentFragment();
+  const menuCategoryEl = document.createDocumentFragment();
 
-  el.append(
+  menuCategoryEl.append(
     createMenuCategoryTitle(category.name),
     createMenuItemsList(category.items),
   );
 
-  return el;
+  return menuCategoryEl;
 };

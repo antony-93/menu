@@ -1,6 +1,6 @@
 import { moneyFormat } from "./utils/moneyFormat";
 
-const createMenuItemDescription = (description) => {
+const createDescription = (description) => {
   const paragraphEl = document.createElement("p");
   paragraphEl.textContent = description;
   return paragraphEl;
@@ -11,19 +11,21 @@ export const createMenuItem = (item) => {
 
   articleEl.classList.add("menu-item");
   articleEl.innerHTML = `
-        <header>
-            <h4>${item.name}</h4>
+    <header>
+      <h4>${item.name}</h4>
 
-            <div class="division"></div>
-
-            <data value="${item.price}">
-                <strong>${moneyFormat(item.price)}</strong>
-            </data>
-        </header>
-    `;
+      <div class="division"></div>
+      
+      <strong>
+        <data value="${item.price}">
+          ${moneyFormat(item.price)}
+        </data>
+      </strong>
+    </header>
+  `;
 
   if (item.description) {
-    articleEl.appendChild(createMenuItemDescription(item.description));
+    articleEl.appendChild(createDescription(item.description));
   }
 
   return articleEl;
