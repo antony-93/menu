@@ -56,7 +56,6 @@
   top: 0;
   z-index: 1;
   background-color: var(--bg);
-  padding-bottom: 1rem;
   border-bottom: 1px solid var(--border);
 }
 
@@ -68,9 +67,12 @@
   margin-top: 1rem;
 }
 
-.menu-section-navigation {
+.menu-section-navigation ul {
   overflow-x: auto;
-  padding-left: 1rem;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -91,13 +93,6 @@
 
 .menu-section-navigation::-webkit-scrollbar {
   display: none;
-}
-
-.menu-section-navigation ul {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-  align-items: center;
 }
 
 .menu-section-navigation a {
